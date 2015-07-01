@@ -1,27 +1,12 @@
-h1>Showing photos...</h1>
-
-<table>
-<tr>
-	<th>Public</th>
-	<th>Caption</th>
-	<th>Image</th>
-	<th></th>
-	<th></th>
-	<th></th>
-</tr>
+<h1>Showing photos...</h1>
+<%= link_to "New photo", new_user_photo_path(current_user) %><br><br>
 
 <% @photos.each do |photo| %>
-<td><%= photo.public %></td>
-<td><%= photo.caption %></td>
-<td><%= photo.image %></td>
-<td><%= link_to 'show', user_photo_path(current_user, photo) %></td>
-<td><%= link_to 'Edit', edit_post_path(post) %></td>
-<td><%= link_to 'Destroy', post, :confirm => 'Are you sure?',
-                                 :method => :delete %></td>
-</tr>
+
+	<%= photo.caption %><br>
+	<%= link_to 'Show', user_photo_path(current_user, photo)  %>
+	<%= link_to 'Edit', edit_user_photo_path(current_user, photo) %>
+	<%= link_to 'Destroy', user_photo_path(current_user, photo),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New post', new_post_path %> -->

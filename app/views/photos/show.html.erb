@@ -1,0 +1,10 @@
+<p>
+  <strong>Caption:</strong>
+  <%= @photo.caption %>
+</p>
+
+<p><img src=<%= @photo.image %></p>
+<br><br><%= link_to "Back To My Photos", user_photos_path(current_user) %>
+<br><br><%= link_to 'Destroy', user_photo_path(current_user, @photo),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>

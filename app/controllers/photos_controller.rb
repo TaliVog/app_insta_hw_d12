@@ -8,20 +8,18 @@ class PhotosController < ApplicationController
 		else
 			redirect_to root_path
 		end
-
 	end
 
 	def show_all
 		# @photos = Photo.all
 		# @photo = Photo.find(params[:photo_id])
-		@photo = Photo.where(public: true)
+		@photos = Photo.where(public: true)
 	end
 
 
 	def new
 		@photo = current_user.photos.build
 	end
-
 
 	def create
 		@photo = current_user.photos.build(photo_params)
@@ -32,11 +30,30 @@ class PhotosController < ApplicationController
 		end
 	end
 
-
 	def show
+		@photo = Photo.find(params[:id])
+	end 
+
+	def edit
+		@photo = Photo.find(params[:id])
 	end
 
-private
+	def update
+		@photo = current_user.photos.find(params[:id])
+			if @photo.update(photo_params)
+				redirect_to @photo
+			else
+				render 'edit'
+			end
+	end
+
+	def destroy
+		@photo = Photo.find(params[:id])
+		@photo.destroy
+		redirect_to photos_path
+	end 
+
+		private
 	def photo_params
 		params.require(:photo).permit(:public, :caption, :image)
 	end

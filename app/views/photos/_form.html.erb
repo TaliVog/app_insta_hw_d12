@@ -1,0 +1,18 @@
+<%= form_for [current_user, @photo] do |f| %>
+	<p>
+		<%= f.label :caption %>
+		<%= f.text_area :caption %>
+	</p>
+	<p>
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+	</p>
+	<p>
+		<%= f.label :public %>
+		<%= f.text_area :public, :placeholder => "true or false" %>
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+	<% end %>

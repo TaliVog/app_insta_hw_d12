@@ -1,22 +1,7 @@
-# <% @photos.each do |photo| %>
-# 	<%= photo.caption %>
-# <% end %>
- 
-# <p>
-#   <b>Public:</b>
-#   <%= @post.public %>
-# </p>
- 
-# <p>
-#   <b>Caption:</b>
-#   <%= @post.caption %>
-# </p>
- 
-# <p>
-#   <b>Image:</b>
-#   <%= @post.image %>
-# </p>
- 
- 
-# <%= link_to 'Edit', edit_photo_path(@photo) %> |
-# <%= link_to 'Back', photos_path %>
+<% @photos.each do |photo| %></br>
+	<%= photo.caption %></br>
+	<img src=<%= photo.image %> > </br>
+	<%= link_to 'Show', user_photo_path(current_user, photo) %>
+<% end %>
+
+<%= link_to "My Photos", user_photos_path(current_user) %>
